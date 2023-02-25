@@ -16,8 +16,8 @@ public class StudentController {
 
     @GetMapping("/get_student")
     public ResponseEntity getStudent(@RequestParam("admnNo") int admnNo){
-       Student student = studentService.getStudent(admnNo);
-       return new ResponseEntity<>(student, HttpStatus.FOUND);
+
+        return studentService.getStudent(admnNo);
     }
     // adding the information
     @PostMapping("/add_student")
@@ -30,7 +30,7 @@ public class StudentController {
     @DeleteMapping("/delete_student/{id}")
     public ResponseEntity deleteStudent(@PathVariable("id") int id){
         String response = studentService.delete_Student(id);
-        if(response.equals("Invalid id")){
+        if(response.equals("Invalid Id")){
             return new ResponseEntity<>(response,HttpStatus.NOT_FOUND);
         }
 
